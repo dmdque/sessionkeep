@@ -4,12 +4,19 @@ angular.module('sessionkeepApp')
   .controller('SessionkeepCtrl', function (
     $scope
     , $http
+    , user
   ) {
     $scope.message = 'Hello';
     $scope.is_sessioning = false;
     $scope.start_time;
     $scope.stop_time;
     $scope.sessions;
+    $scope.user;
+
+    user.fetch().then(function(user) {
+      console.log('user: ', user);
+      $scope.user = user;
+    });
 
     $scope.start_session = function() {
       $scope.start_time = new Date();
