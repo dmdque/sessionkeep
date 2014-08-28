@@ -7,8 +7,8 @@
     | &nbsp
     input(ng-model="practice_location", type="text", name="location")
   h5 Practicing status: {{is_practicing}}
-  .btn.btn-default(ng-show="!is_practicing", ng-click="start_session()") Start Session
-  .btn.btn-default(ng-show="is_practicing", ng-click="stop_session()") Stop Session
+  .btn.btn-success(ng-show="!is_practicing", ng-click="start_session()") Start Session
+  .btn.btn-danger(ng-show="is_practicing", ng-click="stop_session()") Stop Session
 
 .container
   h4 Past sessions
