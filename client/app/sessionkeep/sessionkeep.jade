@@ -11,7 +11,7 @@
   .btn.btn-danger(ng-show="is_practicing", ng-click="stop_session()") Stop Session
 
 .container
-  h4 Past sessions
+  h4 Session Feed
     ul
       li(ng-repeat="session in sessions")
         | {{session.user.name}}

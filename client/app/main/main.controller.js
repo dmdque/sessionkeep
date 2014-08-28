@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('sessionkeepApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, $location) {
+    $location.url('/sessionkeep');
+
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {

@@ -4,13 +4,15 @@ div(ng-include='"components/navbar/navbar.html"')
     .col-sm-12
       h1 Login
       p
+        | You must create an account to use this app.
+      //-p
         | Accounts are reset on server restart from
         code server/config/seed.js
         | . Default account is
         code test@test.com
         | /
         code test
-      p
+      //-p
         | Admin account is
         code admin@admin.com
         | /
@@ -44,7 +46,7 @@ div(ng-include='"components/navbar/navbar.html"')
             i.fa.fa-facebook
             |  Connect with Facebook
           = ' '
-          a.btn.btn-google-plus(href='', ng-click='loginOauth("google")')
+          //-a.btn.btn-google-plus(href='', ng-click='loginOauth("google")')
             i.fa.fa-google-plus
             |  Connect with Google+
           = ' '
