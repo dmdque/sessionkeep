@@ -19,6 +19,8 @@ var UserSchema = new Schema({
   twitter: {},
   google: {},
   github: {}
+
+  , practicing: {type: Boolean, default: false}
 });
 
 /**

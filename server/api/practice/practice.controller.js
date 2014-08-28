@@ -5,7 +5,9 @@ var Practice = require('./practice.model');
 
 // Get list of practices
 exports.index = function(req, res) {
-  Practice.find(function (err, practices) {
+  Practice.find()
+  .populate('user')
+  .exec(function (err, practices) {
     if(err) { return handleError(res, err); }
     return res.json(200, practices);
   });
@@ -22,7 +24,10 @@ exports.show = function(req, res) {
 
 // Creates a new practice in the DB.
 exports.create = function(req, res) {
-  Practice.create(req.body, function(err, practice) {
+  var practice = req.body;
+  practice.user = req.user;
+  console.log('practice: ', practice);
+  Practice.create(practice, function(err, practice) {
     if(err) { return handleError(res, err); }
     return res.json(201, practice);
   });

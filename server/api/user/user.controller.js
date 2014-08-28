@@ -93,6 +93,24 @@ exports.me = function(req, res, next) {
   });
 };
 
+/*
+ *
+ */
+exports.setPracticing = function(req, res, next) {
+  var user_id = req.user._id;
+  User.findOne({
+    _id: user_id
+  }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
+    if (err) return next(err);
+    if (!user) return res.json(401);
+    user.practicing = req.body.practicing;
+    user.save(function(err) {
+      if (err) return next(err);
+      res.json(user);
+    })
+  });
+};
+
 /**
  * Authentication callback
  */

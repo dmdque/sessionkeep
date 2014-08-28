@@ -2,15 +2,16 @@
   h1 Hello, {{user.name}}
   //-.col-md-12
       | This is the sessionkeep view.
-  h5 Sessioning status: {{is_sessioning}}
-  .btn.btn-default(ng-show="!is_sessioning", ng-click="start_session()") Start Session
-  .btn.btn-default(ng-show="is_sessioning", ng-click="stop_session()") Stop Session
+  h5 Practicing status: {{is_practicing}}
+  .btn.btn-default(ng-show="!is_practicing", ng-click="start_session()") Start Session
+  .btn.btn-default(ng-show="is_practicing", ng-click="stop_session()") Stop Session
 
 .container
   h4 Past sessions
     ul
       li(ng-repeat="session in sessions")
-        | Anonymous sessioned from
+        | {{session.user.name}}
+        | sessioned from
         | &nbsp
         span.session-date {{session.start_time | date : 'medium'}}
         | &nbsp
