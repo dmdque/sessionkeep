@@ -2,6 +2,10 @@
   h1 Hello, {{user.name}}
   //-.col-md-12
       | This is the sessionkeep view.
+  //-form
+    | Location:
+    | &nbsp
+    input(ng-model="practice_location", type="text", name="location")
   h5 Practicing status: {{is_practicing}}
   .btn.btn-default(ng-show="!is_practicing", ng-click="start_session()") Start Session
   .btn.btn-default(ng-show="is_practicing", ng-click="stop_session()") Stop Session

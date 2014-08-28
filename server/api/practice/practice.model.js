@@ -10,6 +10,7 @@ var PracticeSchema = new Schema({
   , info: String
   , active: Boolean
   // location
+  , location: {type: ObjectId, ref: 'Location'}
 
   // user
   , user: {type: ObjectId, ref: 'User'}

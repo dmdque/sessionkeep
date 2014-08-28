@@ -12,6 +12,7 @@ angular.module('sessionkeepApp')
     $scope.stop_time;
     $scope.sessions;
     $scope.user;
+    $scope.practice_location = 'SLC';
 
     user.fetch().then(function(user) {
       console.log('user: ', user);
