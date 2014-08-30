@@ -15,7 +15,7 @@ var PracticeSchema = new Schema({
   // user
   , user: {type: ObjectId, ref: 'User'}
   , start_time: {type: Date, default: Date.now}
-  , stop_time: {type: Date, default: Date.now}
+  , stop_time: {type: Date}
 });
 
 module.exports = mongoose.model('Practice', PracticeSchema);

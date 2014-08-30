@@ -24,9 +24,15 @@ angular.module('sessionkeepApp')
     $scope.start_session = function() {
       $scope.start_time = new Date();
       console.log('start_time: ', $scope.start_time);
-      $http.post('/api/users/set_practicing', {practicing: true})
+      var session = {
+        start_time: $scope.start_time
+      }
+      $http.post('/api/practices', session)
       .success(function(data) {
-        $scope.is_practicing = true;
+        $http.post('/api/users/set_practicing', {practicing: true})
+        .success(function(data) {
+          $scope.is_practicing = true;
+        })
       })
     }
 
@@ -36,11 +42,11 @@ angular.module('sessionkeepApp')
       // post to server
       // TODO: move into a service
       //$http
+      // session object not needed
       var session = {
-        start_time: $scope.start_time
-        , stop_time: $scope.stop_time
+        stop_time: $scope.stop_time
       }
-      $http.post('/api/practices', session)
+      $http.post('/api/practices/stop_practice', session)
       .success(function(data) {
         console.log(data);
         $http.post('/api/users/set_practicing', {practicing: false})

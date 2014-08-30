@@ -59,6 +59,27 @@ exports.destroy = function(req, res) {
   });
 };
 
+// stops the open practice
+exports.stopPractice = function(req, res) {
+  console.log(req.user._id);
+  Practice.findOne({$and : [{'user': req.user._id, 'stop_time': null}]})
+  .exec(function (err, practice) {
+    console.log('practice: ', practice);
+    if(err) { return handleError(res, err); }
+    if(!practice) { return res.send(404); }
+    practice.stop_time = new Date();
+    console.log('practice: ', practice);
+    practice.save(function(err) {
+      if(!err) {
+        return res.json(200, practice);
+      } else {
+        console.log('error', err);
+      }
+    })
+  })
+};
+
 function handleError(res, err) {
+  console.log('error: ', err);
   return res.send(500, err);
 }
