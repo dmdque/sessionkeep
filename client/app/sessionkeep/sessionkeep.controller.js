@@ -21,7 +21,7 @@ angular.module('sessionkeepApp')
       $scope.is_practicing = user.practicing;
     });
 
-    $scope.start_session = function() {
+    $scope.startSession = function() {
       $scope.start_time = new Date();
       console.log('start_time: ', $scope.start_time);
       var session = {
@@ -36,7 +36,7 @@ angular.module('sessionkeepApp')
       })
     }
 
-    $scope.stop_session = function() {
+    $scope.stopSession = function() {
       $scope.stop_time = new Date();
       console.log('stop_time : ', $scope.stop_time);
       // post to server
@@ -60,10 +60,19 @@ angular.module('sessionkeepApp')
       // TODO: move into service
       $http.get('/api/practices')
       .success(function(data) {
-        $scope.sessions = data
+        $scope.sessions = data;
         console.log(data);
       })
     }
     $scope.get_sessions();
+
+    $scope.deletePractice = function(session_id) {
+      $http.delete('/api/practices/' + session_id)
+      .success(function(data) {
+        console.log(data);
+      })
+
+      console.log('session id: ', session_id);
+    }
 
   });
